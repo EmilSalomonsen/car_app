@@ -6,6 +6,7 @@ import { CarProps } from '@/types';
 import CustomButton from './CustomButton';
 import { calculateCarRent } from '@/utils';
 import CarDetails from './CarDetails';
+import Link from 'next/link';
 
 interface carCardProps {
     car: CarProps;
@@ -55,20 +56,25 @@ const CarCard = ({ car }: carCardProps) => {
                         {city_mpg}
                     </p>
                 </div>
-
             </div>
 
-            <div className='car-card__btn-container'>
+            <div className='car-card__btn-container w-full 
+            py-[16px] rounded-full bg-primary-blue
+            text-white text-[14px] leading-[17px] font-bold'>
             <CustomButton
             title='View More'
             containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
             textStyles='text-white text-[14px] leading-[17px] font-bold'
-            rightIcon='/right-arrow.svg'
             handleClick={() => setIsOpen(true)}
-                />
+            />
+                <Link href="/specificCarDetails">
+                    <img src="/right-arrow.svg" alt="right arrow" className='w-full py-[16px] px-[16px]' />
+                </Link>
+            
             </div>
         </div>
-        <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />    </div>
+        <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />    
+    </div>
   )
 }
 
